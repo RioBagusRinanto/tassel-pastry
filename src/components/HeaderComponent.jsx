@@ -19,7 +19,7 @@ function HeaderComponent() {
           <Link to="/about" className="text-base font-medium text-gray-700 hover:text-orange-500">About</Link>
           <Link to="/contact" className="text-base font-medium text-gray-700 hover:text-orange-500">Contact</Link>
           {isHome ? (
-            <a href="#order" className="px-4 py-2 rounded-md bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition">Order Now</a>
+            <Link to="/pastries" className="px-4 py-2 rounded-md bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition">Order Now</Link>
           ) : (
             <Link to="/cart" className="relative px-4 py-2 rounded-md bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition flex items-center">
               <svg className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -50,7 +50,7 @@ function HeaderComponent() {
             <Link to="/about" className="text-lg font-semibold text-gray-700 hover:text-orange-500 w-full text-center" onClick={() => setMobileMenuOpen(false)}>About</Link>
             <Link to="/contact" className="text-lg font-semibold text-gray-700 hover:text-orange-500 w-full text-center" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
             {isHome ? (
-              <a href="#order" className="w-full py-3 rounded-xl bg-orange-500 text-white font-bold shadow-lg hover:bg-orange-400 transition text-lg text-center" onClick={() => setMobileMenuOpen(false)}>Order Now</a>
+              <Link to="/pastries" className="w-full py-3 rounded-xl bg-orange-500 text-white font-bold shadow-lg hover:bg-orange-400 transition text-lg text-center" onClick={() => setMobileMenuOpen(false)}>Order Now</Link>
             ) : (
               <Link to="/cart" className="relative w-full py-3 rounded-xl bg-orange-500 text-white font-bold shadow-lg hover:bg-orange-400 transition text-lg flex items-center justify-center" onClick={() => setMobileMenuOpen(false)}>
                 <svg className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
