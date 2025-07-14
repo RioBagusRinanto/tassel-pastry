@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function FooterComponent() {
   return (
@@ -9,10 +10,10 @@ function FooterComponent() {
           <p className="text-sm mt-2">&copy; {new Date().getFullYear()} Tassel Pastry. All rights reserved.</p>
         </div>
         <div className="flex space-x-6">
-          <a href="#menu" className="hover:underline">Menu</a>
-          <a href="#about" className="hover:underline">About</a>
-          <a href="#contact" className="hover:underline">Contact</a>
-          <a href="#order" className="hover:underline">Order Now</a>
+          <Link to="/pastries" className="hover:underline">Menu</Link>
+          <Link to="/about" className="hover:underline">About</Link>
+          <Link to="/contact" className="hover:underline">Contact</Link>
+          <Link to="/pastries" className="hover:underline">Order Now</Link>
         </div>
       </div>
     </footer>

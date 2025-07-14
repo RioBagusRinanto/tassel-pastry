@@ -16,8 +16,8 @@ function HeaderComponent() {
         </div>
         <div className="hidden md:flex items-center space-x-4 sm:space-x-8">
           <Link to="/pastries" className="text-base font-medium text-gray-700 hover:text-orange-500">Menu</Link>
-          <a href="#about" className="text-base font-medium text-gray-700 hover:text-orange-500">About</a>
-          <a href="#contact" className="text-base font-medium text-gray-700 hover:text-orange-500">Contact</a>
+          <Link to="/about" className="text-base font-medium text-gray-700 hover:text-orange-500">About</Link>
+          <Link to="/contact" className="text-base font-medium text-gray-700 hover:text-orange-500">Contact</Link>
           {isHome ? (
             <a href="#order" className="px-4 py-2 rounded-md bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition">Order Now</a>
           ) : (
@@ -47,8 +47,8 @@ function HeaderComponent() {
         <div className="fixed inset-0 z-40 bg-black bg-opacity-30 backdrop-blur-sm flex flex-col">
           <div className="bg-white w-full shadow-lg rounded-b-3xl py-8 px-6 flex flex-col items-center space-y-6 animate-modalFadeIn">
             <Link to="/pastries" className="text-lg font-semibold text-gray-700 hover:text-orange-500 w-full text-center" onClick={() => setMobileMenuOpen(false)}>Menu</Link>
-            <a href="#about" className="text-lg font-semibold text-gray-700 hover:text-orange-500 w-full text-center" onClick={() => setMobileMenuOpen(false)}>About</a>
-            <a href="#contact" className="text-lg font-semibold text-gray-700 hover:text-orange-500 w-full text-center" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+            <Link to="/about" className="text-lg font-semibold text-gray-700 hover:text-orange-500 w-full text-center" onClick={() => setMobileMenuOpen(false)}>About</Link>
+            <Link to="/contact" className="text-lg font-semibold text-gray-700 hover:text-orange-500 w-full text-center" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
             {isHome ? (
               <a href="#order" className="w-full py-3 rounded-xl bg-orange-500 text-white font-bold shadow-lg hover:bg-orange-400 transition text-lg text-center" onClick={() => setMobileMenuOpen(false)}>Order Now</a>
             ) : (

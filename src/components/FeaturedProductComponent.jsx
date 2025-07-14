@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function FeaturedProductComponent() {
   const products = [
@@ -30,7 +31,7 @@ function FeaturedProductComponent() {
               <div className="relative z-10 w-full h-full flex flex-col items-center justify-end text-center px-4 py-6 bg-black/40" style={{borderRadius: '0.75rem'}}>
                 <h3 className="text-xl font-semibold text-white mb-2 drop-shadow">{product.name}</h3>
                 <p className="text-white mb-4 text-center drop-shadow">{product.description}</p>
-                <button className="px-6 py-2 rounded-full bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition mb-2">Order Now</button>
+                <Link to="/pastries" className="px-6 py-2 rounded-full bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition mb-2">Order Now</Link>
               </div>
             </div>
           ))}
