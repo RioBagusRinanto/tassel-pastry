@@ -18,7 +18,7 @@ function HeroSectionComponent() {
             <p className="text-lg sm:text-xl text-white mb-8 drop-shadow">
               Experience the finest selection of handcrafted pastries, made with love and the freshest ingredients.
             </p>
-            <a href="#order" className="inline-block px-8 py-3 rounded-2xl bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition text-lg">
+            <a href="/pastries" className="inline-block px-8 py-3 rounded-2xl bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition text-lg">
               Order Now
             </a>
           </div>
