@@ -67,72 +67,64 @@ function ProductsComponent() {
   };
 
   return (
-    <section className="w-full py-16 px-4 bg-white flex items-center justify-center">
-      <div className="max-w-6xl w-full">
-        <h2 className="text-3xl font-bold text-orange-500 mb-10 text-center">Our Pastries</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-[700px]">
+    <section style={{ background: '#f8f9fa', padding: '2rem 0' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
+        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '1.5rem', color: '#222', textAlign: 'center' }}>Our Pastries</h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '1.5rem',
+        }}>
           {products.map((product, idx) => (
-            <div key={idx} className="bg-orange-50 rounded-xl shadow-lg overflow-hidden flex flex-col items-center p-6 relative transition-transform duration-300 hover:scale-105" style={{minHeight: '340px'}}>
-              <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover z-0 brightness-50" />
-              <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
-                <h3 className="text-xl font-semibold text-white mb-2 text-center drop-shadow-lg">{product.name}</h3>
-                <p className="text-white mb-4 text-center text-sm drop-shadow">{product.description}</p>
-                <button className="px-6 py-2 rounded-full bg-orange-500 text-white font-semibold shadow hover:bg-orange-400 transition" onClick={() => handleOrderClick(product)}>Order Now</button>
-              </div>
+            <div key={idx} style={{
+              background: '#fff',
+              border: '1px solid #eee',
+              borderRadius: '8px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '1rem',
+              transition: 'box-shadow 0.2s',
+              minHeight: '340px',
+            }}>
+              <img src={product.image} alt={product.name} style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem' }} />
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#222', marginBottom: '0.5rem', textAlign: 'center' }}>{product.name}</h3>
+              <p style={{ color: '#666', fontSize: '0.95rem', marginBottom: '1rem', textAlign: 'center' }}>{product.description}</p>
+              <button style={{ padding: '0.5rem 1.2rem', borderRadius: '6px', background: '#ff9800', color: '#fff', fontWeight: 600, border: 'none', boxShadow: 'none', cursor: 'pointer', marginTop: 'auto' }} onClick={() => handleOrderClick(product)}>
+                Order Now
+              </button>
             </div>
           ))}
         </div>
         {showModal && selectedProduct && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div className="absolute inset-0 bg-black bg-opacity-10 backdrop-blur-md transition-opacity duration-500"></div>
-            <div className="bg-white rounded-3xl shadow-2xl p-0 max-w-2xl w-full relative animate-modalFadeIn scale-100 transition-all duration-500 flex flex-col md:flex-row overflow-hidden">
-              <div className="absolute top-4 right-4 z-20">
-                <button className="text-gray-500 hover:text-orange-500 text-2xl transition-transform duration-300 hover:scale-125 bg-white bg-opacity-90 rounded-full w-10 h-10 flex items-center justify-center border border-gray-300 shadow" onClick={() => setShowModal(false)}>
-                  &times;
-                </button>
+          <div style={{ position: 'fixed', inset: 0, zIndex: 50, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.08)' }}>
+            <div style={{ background: '#fff', borderRadius: '10px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'row', overflow: 'hidden', position: 'relative' }}>
+              <button style={{ position: 'absolute', top: 12, right: 12, background: '#fff', border: '1px solid #eee', borderRadius: '50%', width: 32, height: 32, fontSize: 20, color: '#888', cursor: 'pointer' }} onClick={() => setShowModal(false)}>&times;</button>
+              <div style={{ flex: 1, minWidth: 180, background: '#f8f9fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src={selectedProduct.image} alt={selectedProduct.name} style={{ width: '90%', height: '180px', objectFit: 'cover', borderRadius: '8px' }} />
               </div>
-              {/* Left: Image half */}
-              <div className="md:w-1/2 w-full h-64 md:h-auto flex items-center justify-center bg-orange-50 relative">
-                <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full object-cover rounded-none md:rounded-l-3xl shadow-xl" />
-              </div>
-              {/* Right: Details half */}
-              <div className="md:w-1/2 w-full flex flex-col items-center px-8 py-8">
-                <h3 className="text-2xl font-extrabold text-orange-500 mb-2 text-center drop-shadow">{selectedProduct.name}</h3>
-                <p className="text-gray-600 mb-6 text-center text-base font-medium">{selectedProduct.description}</p>
-                <div className="mb-6 w-full">
-                  <label className="block text-sm font-semibold mb-2 text-orange-500">Choose Variant</label>
-                  <div className="flex gap-4 justify-center">
+              <div style={{ flex: 2, padding: '2rem 1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#ff9800', marginBottom: '0.5rem' }}>{selectedProduct.name}</h3>
+                <p style={{ color: '#555', marginBottom: '1.2rem', fontSize: '1rem' }}>{selectedProduct.description}</p>
+                <div style={{ marginBottom: '1rem' }}>
+                  <label style={{ fontWeight: 600, color: '#ff9800', fontSize: '0.95rem', marginBottom: '0.3rem', display: 'block' }}>Choose Variant</label>
+                  <div style={{ display: 'flex', gap: '0.7rem' }}>
                     {["Regular", "Large", "Mini"].map(opt => (
-                      <label key={opt} className="flex items-center cursor-pointer bg-orange-50 px-4 py-2 rounded-xl shadow hover:bg-orange-100 transition">
-                        <input
-                          type="radio"
-                          name="variant"
-                          value={opt}
-                          checked={variant === opt}
-                          onChange={e => setVariant(e.target.value)}
-                          className="accent-orange-500 mr-2"
-                        />
-                        <span className="text-orange-500 font-semibold">{opt}</span>
+                      <label key={opt} style={{ background: '#f8f9fa', border: '1px solid #eee', borderRadius: '6px', padding: '0.4rem 1rem', cursor: 'pointer', fontWeight: 500, color: '#ff9800' }}>
+                        <input type="radio" name="variant" value={opt} checked={variant === opt} onChange={e => setVariant(e.target.value)} style={{ marginRight: '0.4rem' }} />
+                        {opt}
                       </label>
                     ))}
                   </div>
                 </div>
-                <div className="mb-6 w-full">
-                  <label className="block text-sm font-semibold mb-2 text-orange-500">How many pieces?</label>
-                  <input type="number" min={1} className="w-full border-2 border-orange-200 rounded-xl px-4 py-2 text-center font-semibold" value={quantity} onChange={e => setQuantity(e.target.value)} />
+                <div style={{ marginBottom: '1rem' }}>
+                  <label style={{ fontWeight: 600, color: '#ff9800', fontSize: '0.95rem', marginBottom: '0.3rem', display: 'block' }}>How many pieces?</label>
+                  <input type="number" min={1} style={{ width: '100%', border: '1px solid #eee', borderRadius: '6px', padding: '0.5rem', fontWeight: 500, textAlign: 'center' }} value={quantity} onChange={e => setQuantity(e.target.value)} />
                 </div>
-                <button className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold shadow-lg hover:from-orange-500 hover:to-orange-600 transition text-lg tracking-wide" onClick={handleAddToCart}>Add to Cart</button>
+                <button style={{ padding: '0.7rem', borderRadius: '6px', background: '#ff9800', color: '#fff', fontWeight: 700, border: 'none', boxShadow: 'none', cursor: 'pointer', fontSize: '1rem', marginTop: '0.5rem' }} onClick={handleAddToCart}>Add to Cart</button>
               </div>
             </div>
-            <style>{`
-              @keyframes modalFadeIn {
-                0% { opacity: 0; transform: scale(0.95); }
-                100% { opacity: 1; transform: scale(1); }
-              }
-              .animate-modalFadeIn {
-                animation: modalFadeIn 0.5s cubic-bezier(0.4,0,0.2,1);
-              }
-            `}</style>
           </div>
         )}
       </div>
