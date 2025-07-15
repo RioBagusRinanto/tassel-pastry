@@ -70,7 +70,7 @@ function ProductsComponent() {
     <section className="w-full py-16 px-4 bg-white flex items-center justify-center">
       <div className="max-w-6xl w-full">
         <h2 className="text-3xl font-bold text-orange-500 mb-10 text-center">Our Pastries</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-[700px]">
           {products.map((product, idx) => (
             <div key={idx} className="bg-orange-50 rounded-xl shadow-lg overflow-hidden flex flex-col items-center p-6 relative transition-transform duration-300 hover:scale-105" style={{minHeight: '340px'}}>
               <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover z-0 brightness-50" />
