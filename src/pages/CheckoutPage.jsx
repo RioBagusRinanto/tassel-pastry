@@ -1,11 +1,19 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function CheckoutPage() {
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate('/') // Redirect to pastries list (home)
+  }
+
   return (
     <section className="w-full py-16 px-4 bg-gradient-to-br from-orange-50 to-white flex items-center justify-center min-h-[60vh]">
       <div className="max-w-2xl w-full bg-white rounded-2xl shadow-lg p-8 border border-orange-100">
         <h1 className="text-3xl font-bold text-orange-500 mb-8 text-center">Checkout</h1>
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-semibold text-orange-500 mb-2">Full Name</label>
             <input type="text" className="w-full border-2 border-orange-100 rounded-xl px-4 py-2" placeholder="Your Name" />
