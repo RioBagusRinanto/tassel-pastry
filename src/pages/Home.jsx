@@ -18,10 +18,10 @@ const Home = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  const openModal = (product) => {
-    setSelectedProduct(product);
-    setIsModalOpen(true);
-  };
+//   const openModal = (product) => {
+//     setSelectedProduct(product);
+//     setIsModalOpen(true);
+//   };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -146,12 +146,6 @@ const Home = () => {
                   <p className="text-gray-600 mb-4">{product.description}</p>
                   <div className="flex items-center justify-between mb-1 mt-auto">
                     <span className="text-xl font-bold text-orange-600">${product.price.toFixed(2)}</span>
-                    <button
-                      onClick={() => openModal(product)}
-                      className="text-orange-600 font-semibold hover:text-orange-700 inline-flex items-center"
-                    >
-                      Add to Cart <ArrowRight className="ml-1" size={16} />
-                    </button>
                   </div>
                 </div>
               </div>
