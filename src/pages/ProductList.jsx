@@ -163,8 +163,8 @@ const ProductList = () => {
                     onClick={() => openModal(product)}
                     className="w-full bg-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors duration-200 flex items-center justify-center mt-auto"
                   >
-                    <ShoppingCart className="mr-2" size={16} />
-                    Add to Cart
+                    <svg className="mr-2" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5-5-5-5"/></svg>
+                    View Details
                   </button>
                 </div>
               </div>

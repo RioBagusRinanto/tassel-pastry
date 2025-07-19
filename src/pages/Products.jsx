@@ -1,8 +1,9 @@
 import React from 'react';
-import { ArrowRight, Star, ShoppingCart } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 import { products } from '../data/products';
 
 const Products = () => {
+  const [expandedId, setExpandedId] = React.useState(null);
 
   return (
     <div className="pt-16">
@@ -59,11 +60,28 @@ const Products = () => {
                   
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-orange-600">${product.price.toFixed(2)}</span>
-                    <button className="bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors duration-200 inline-flex items-center">
-                      <ShoppingCart className="mr-2" size={16} />
-                      Add to Cart
+                    <button
+                      className="bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors duration-200 inline-flex items-center"
+                      onClick={() => setExpandedId(expandedId === product.id ? null : product.id)}
+                    >
+                      <ArrowRight className="mr-2" size={16} />
+                      View Details
                     </button>
                   </div>
+                  {expandedId === product.id && (
+                    <div className="mt-4 p-4 bg-orange-50 rounded-lg border border-orange-100">
+                      <h4 className="text-md font-bold text-orange-700 mb-2">Variants</h4>
+                      {product.variants && product.variants.length > 0 ? (
+                        <ul className="list-disc list-inside text-sm text-gray-700">
+                          {product.variants.map((variant, idx) => (
+                            <li key={idx}>{variant}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-sm text-gray-500">No variants available.</p>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

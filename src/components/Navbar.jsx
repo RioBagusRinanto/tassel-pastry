@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingCart } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+// import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { toggleCart, getTotalItems } = useCart();
+//   const { toggleCart, getTotalItems } = useCart();
 
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/products', label: 'Products' },
-    { path: '/cart', label: 'Cart' },
-    { path: '/privacy', label: 'Privacy' }
+    // { path: '/cart', label: 'Cart' },
+    // { path: '/privacy', label: 'Privacy' }
   ];
 
   return (
@@ -39,7 +39,7 @@ const Navbar = () => {
               </Link>
             ))}
             
-            <button
+            {/* <button
               onClick={toggleCart}
               className="relative text-gray-700 hover:text-orange-600 transition-colors duration-200"
             >
@@ -49,7 +49,7 @@ const Navbar = () => {
                   {getTotalItems()}
                 </span>
               )}
-            </button>
+            </button> */}
             </div>
           </div>
 
@@ -80,16 +80,6 @@ const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
-              <button
-                onClick={() => {
-                  toggleCart();
-                  setIsOpen(false);
-                }}
-                className="flex items-center px-3 py-2 text-gray-700 hover:text-orange-600 transition-colors duration-200"
-              >
-                <ShoppingCart className="mr-2" size={20} />
-                Cart ({getTotalItems()})
-              </button>
             </div>
           </div>
         )}
