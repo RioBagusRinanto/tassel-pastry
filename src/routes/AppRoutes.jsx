@@ -1,26 +1,25 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import ProductPage from '../pages/ProductPage';
-import OurStoryPage from '../pages/OurStoryPage';
-import ContactUs from '../pages/ContactUs';
-import CartPage from '../pages/CartPage';
-import CheckoutPage from '../pages/CheckoutPage';
-
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from '../pages/Home';
+import About from '../pages/About';
+import ProductList from '../pages/ProductList';
+import Cart from '../pages/Cart';
+import Checkout from '../pages/Checkout';
+import PaymentSuccess from '../pages/PaymentSuccess';
+import Privacy from '../pages/Privacy';
 
 function AppRoutes() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/pastries" element={<ProductPage />} />
-        <Route path="/about" element={<OurStoryPage />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/products" element={<ProductList />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/payment-success" element={<PaymentSuccess />} />
+      <Route path="/privacy" element={<Privacy />} />
+    </Routes>
   );
 }
 
-export default AppRoutes
+export default AppRoutes;
