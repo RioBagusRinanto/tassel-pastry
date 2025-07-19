@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -23,10 +24,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="/" className="hover:text-orange-400 transition-colors">Home</a></li>
-              <li><a href="/about" className="hover:text-orange-400 transition-colors">About</a></li>
-              <li><a href="/products" className="hover:text-orange-400 transition-colors">Products</a></li>
-              <li><a href="/privacy" className="hover:text-orange-400 transition-colors">Privacy Policy</a></li>
+              <li><Link to="/" className="hover:text-orange-400 transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-orange-400 transition-colors">About</Link></li>
+              <li><Link to="/products" className="hover:text-orange-400 transition-colors">Products</Link></li>
+              <li><Link to="/privacy" className="hover:text-orange-400 transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
           

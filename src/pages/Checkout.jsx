@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CreditCard, Truck, Shield } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -25,6 +25,10 @@ const Checkout = () => {
     cvv: '',
     nameOnCard: '',
   });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

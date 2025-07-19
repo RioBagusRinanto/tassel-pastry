@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, Minus, Trash2, ShoppingCart, ArrowLeft } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 const Cart = () => {
   const { state, removeFromCart, updateQuantity, clearCart, getTotalPrice } = useCart();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   if (state.items.length === 0) {
     return (

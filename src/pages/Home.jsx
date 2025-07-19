@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Star, Users, Globe, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
@@ -13,6 +13,10 @@ const Home = () => {
     phone: '',
     message: ''
   });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const openModal = (product) => {
     setSelectedProduct(product);

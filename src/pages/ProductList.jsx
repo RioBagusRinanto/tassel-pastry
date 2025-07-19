@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Star, ShoppingCart, Filter } from 'lucide-react';
 import { products } from '../data/products';
 import ProductModal from '../components/ProductModal';
@@ -8,6 +8,8 @@ const ProductList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortBy, setSortBy] = useState('name');
+  const [cardsPerPage, setCardsPerPage] = useState(20);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const categories = ['All', ...Array.from(new Set(products.map(p => p.category)))];
 
@@ -29,6 +31,12 @@ const ProductList = () => {
     }
   });
 
+  const pagedProducts = sortedProducts.slice(
+    (currentPage - 1) * cardsPerPage,
+    currentPage * cardsPerPage
+  );
+  const totalPages = Math.ceil(sortedProducts.length / cardsPerPage);
+
   const openModal = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
@@ -38,6 +46,10 @@ const ProductList = () => {
     setIsModalOpen(false);
     setSelectedProduct(null);
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   return (
     <div className="pt-16">
@@ -78,7 +90,7 @@ const ProductList = () => {
               </div>
             </div>
             
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 whitespace-nowrap mr-2">
               <label htmlFor="sort" className="text-sm font-medium text-gray-700">
                 Sort by:
               </label>
@@ -94,6 +106,20 @@ const ProductList = () => {
                 <option value="rating">Rating</option>
               </select>
             </div>
+
+            <div className="flex items-center space-x-2 whitespace-nowrap">
+              <label htmlFor="cardsPerPage" className="text-sm font-medium text-gray-700">Cards per page:</label>
+              <select
+                id="cardsPerPage"
+                value={cardsPerPage}
+                onChange={e => { setCardsPerPage(Number(e.target.value)); setCurrentPage(1); }}
+                className="border border-gray-300 rounded-md px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >
+                {[10, 20, 40, 80, 100].map(n => (
+                  <option key={n} value={n}>{n}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </section>
@@ -102,7 +128,7 @@ const ProductList = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {sortedProducts.map((product) => (
+            {pagedProducts.map((product) => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
                 <div className="relative">
                   <img
@@ -150,6 +176,21 @@ const ProductList = () => {
               <p className="text-gray-500 text-lg">No products found in this category.</p>
             </div>
           )}
+
+          {/* Paging Controls */}
+          <div className="flex justify-center items-center mt-8 gap-2">
+            <button
+              className="px-3 py-1 rounded bg-gray-200 text-gray-700 font-semibold disabled:opacity-50"
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+            >Prev</button>
+            <span className="px-2 text-sm">Page {currentPage} of {totalPages}</span>
+            <button
+              className="px-3 py-1 rounded bg-gray-200 text-gray-700 font-semibold disabled:opacity-50"
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+            >Next</button>
+          </div>
         </div>
       </section>
 
